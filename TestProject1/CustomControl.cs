@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 
 namespace TestProject1
 {
@@ -14,6 +15,19 @@ namespace TestProject1
             IWebElement element = driver.FindElement(By.XPath($"//input[@id='{WebElement}-awed']"));
             element.Clear();
             element.SendKeys(Value);
+        }
+
+        public static void EnterText(IWebElement element, String value) => element.SendKeys(value);
+
+        public static void ClickWebElement(IWebElement element)
+        {
+            element.Click();
+        }
+
+        public static void SelectValue(IWebElement element, String value)
+        {
+            SelectElement s = new SelectElement(element);
+            s.SelectByValue(value);
         }
     }
 }
